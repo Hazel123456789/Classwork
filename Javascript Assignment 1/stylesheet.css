@@ -1,0 +1,13 @@
+body{
+    background-color:rgb(1, 78, 145);
+    color:whitesmoke;
+}
+h1 {background-color:rgb(5, 48, 85);
+    color:azure;
+}
+#return{
+    color:red
+}
+#success{
+    color:rgb(0, 219, 0)
+}

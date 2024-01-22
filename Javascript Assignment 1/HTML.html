@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="stylesheet.css">
+<body>
+    <h1>Create your account:</h1>
+    
+    <form>
+        <p>Enter your username. It must be at least 4 characters long. This will be displayed publicly.</p>
+        <label for="uid">Username:</label>
+        <input type="text" id="uid" required minlength=4>
+        <br>
+        <label for="email">Email address:</label>
+        <input type="text" id="email" required>
+        <br>
+        <p>Enter your password. It must be at least 8 characters long and contain a lowercase letter, uppercase letter, number, and special character.</p>
+        <label for="pw">Password:</label>
+        <input type="text" id="pw" required minlength=8>
+        <br>
+        <label for="pw">Confirm password:</label>
+        <input type="text" id="pwc" required minlength=8>
+        <br>
+        <button onclick="checklogin()" type="button">Submit</button>
+    </form>
+    <p id="return"></p>
+    <p id="success"></p>
+    <script>
+        function checklogin(){
+            let username = document.getElementById('uid').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('pw').value;
+            let passconf = document.getElementById('pwc').value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(username.length < 4){
+                    document.getElementById('return').innerHTML="Username is not long enough."} 
+                else if (!emailRegex.test(email)){ 
+                    document.getElementById('return').innerHTML = 'Invalid email format.'}
+                else if ((password)!==(passconf)){
+                    document.getElementById('return').innerHTML="Passwords do not match."}
+                else if (password.length < 8){
+                    document.getElementById('return').innerHTML="Password is not long enough."}
+                else if (!/\d/.test(password)) { 
+                    document.getElementById('return').innerHTML = 'Password must have at least one number'}
+                else if (!/[A-Z]/.test(password)){ 
+                    document.getElementById('return').innerHTML = 'Password must have at least one uppercase character.'}
+                else if (!/[a-z]/.test(password)){ 
+                    document.getElementById('return').innerHTML = 'Password must have at least one lowercase character.'}
+                else if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/.test(password)){ 
+                    document.getElementById('return').innerHTML = 'Password must have at least one special character.'}
+                        else{document.getElementById('success').innerHTML="Success Your account was created.", document.getElementById('return').innerHTML=" "}
+        }
+    </script>
+
+
+</body>
+</html>
